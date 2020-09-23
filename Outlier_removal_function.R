@@ -1,5 +1,5 @@
 ## Outlier correcting function with absolute or relative metrics
-## for cutoffs (extreme differnces from previous values) values 
+## for cutoffs (extreme differences from previous values) values 
 ## in time series data with periodic patterns
 data.cleaner<-function(data.vect,
                              crit.num,
@@ -16,8 +16,7 @@ data.cleaner<-function(data.vect,
   ##                vector form.
   ## crit.num     - this is the critical value above which data is deemed to be an 
   ##                outlier (for absolute cutoff), or the number of standard deviations
-  ##                from the central 95% of data for relative cutoffs, the smaller the central
-  ##                data range (eg. 90%, 85% etc) the smaller this value should be.
+  ##                from the central 95% of data for relative cutoffs.
   ## trails       - how many of the trailing observations should be included in the 
   ##                spline fit used to replace outlier? Should use as many observations
   ##                as make up at least one cycle (if periodic) otherwise non-periodic will
@@ -25,7 +24,8 @@ data.cleaner<-function(data.vect,
   ## rel.or.abs   - switch that determines whether a relative cutoff (number of standard
   ##                deviations), or an absolute cutoff (critical number) is used.
   ## differential - determines how much more (or less) sensitive the outliers are to 
-  ##                negative values.
+  ##                negative values. Values should be >0, with higher values reducing the cuttoff 
+  ##                used for negative numbers. 
   ## center.dat   - determines the central percent of data that is used for relative cutoff 
   ##                estimates. 
   ## TIMESTAMP    - these are the times of observations - if no time vector is provided
